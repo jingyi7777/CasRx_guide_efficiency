@@ -102,9 +102,9 @@ def train_split_test(args):
         get_pseudo_roc_for_regression(model, test_dataset, args.regression, args.kfold, args.split, model_name=args.model, dataset_name=args.dataset)
     else:
         fig, (ax1, ax2) = plt.subplots(1, 2)
-        get_classification_metrics(model, unshuffled_train, fig, ax1, ax2, args.regression, args.kfold, args.split, args.guidelength, model_name=args.model + ' on train',
+        get_classification_metrics(model, unshuffled_train, fig, ax1, ax2, args.regression, args.kfold, args.split, args.guidelength, model_name=args.model + ':training set',
                                    dataset_name=args.dataset, save=False)
-        get_classification_metrics(model, val_dataset, fig, ax1, ax2, args.regression, args.kfold, args.split, args.guidelength, model_name=args.model + ' on val', dataset_name=args.dataset, 
+        get_classification_metrics(model, val_dataset, fig, ax1, ax2, args.regression, args.kfold, args.split, args.guidelength, model_name=args.model + ':validation set', dataset_name=args.dataset, 
                                    save=False)
         get_classification_metrics_test(args.testset_path, model, test_dataset, fig, ax1, ax2, args.regression, args.kfold, args.split, args.guidelength, model_name=args.model, dataset_name=args.dataset)
 
