@@ -59,7 +59,8 @@ def predict_ensemble(args):
         predict_mean = np.mean(predict_allf, axis=0)
         #sigmoid
         outputs = np.array(list(tf.sigmoid(predict_mean).numpy().flat))
-        labels = [label for (inputs, label) in test_dataset.unbatch()]
+        #labels = [label for (inputs, label) in test_dataset.unbatch()]
+        labels = np.array([label for (input, label) in test_dataset.unbatch().as_numpy_iterator()])
         test_inputs = [inputs for (inputs, label) in test_dataset.unbatch()]
 
         if len(test_inputs[0]) == 2:
