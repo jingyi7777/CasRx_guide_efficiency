@@ -731,6 +731,27 @@ def create_dataset_inputs_and_outputs(input_list, outputs, classes):
     return (train_inputs, train_outputs), (val_inputs, val_outputs), (test_inputs, test_outputs)
 
 
+def create_guide_splits_kfold(values_to_split: list, kfold, split):
+    kf = KFold(n_splits=kfold, shuffle=True, random_state=42)
+    ss = 0
+    for train_index, test_index in kf.split(values_to_split[-1]):
+        if ss == int(split):
+            #print("TRAIN:", train_index, "TEST:", test_index)
+            val_ids = np.random.choice(train_index, size=len(test_index), replace=False)
+            test_ids = test_index
+            train_ids = list(set(train_index) - set(val_ids))
+            #X_train, X_test = np.array(all_cols[0])[train_index], np.array(all_cols[0])[test_index]
+            #y_train, y_test = np.array(all_cols[1])[train_index], np.array(all_cols[1])[test_index]
+            train = [[arr[i] for i in train_ids] for arr in values_to_split]
+            val = [[arr[i] for i in val_ids] for arr in values_to_split]
+            test = [[arr[i] for i in test_ids] for arr in values_to_split]
+            return train, val, test
+        else:
+            ss += 1
+
+            
+
+
 def prep_dataset(d: tf.data.Dataset, batch_size=16):
     d = d.batch(batch_size).prefetch(tf.data.experimental.AUTOTUNE)
     return d
