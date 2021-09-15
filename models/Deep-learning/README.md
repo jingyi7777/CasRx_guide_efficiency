@@ -1,5 +1,18 @@
 # cas13d-guide-efficiency
 
+###Getting Started
+Installing Requirements
+```
+pip3 install -r requirements.txt
+```
+Running a Model on the survival screen dataset with all features
+```
+python3 train.py --dataset guide_all_features_9f --model guide_nolin_ninef --kfold 9 --split 0
+```
+Note: The whole workflow for model hyperparameter tuning, model feature engineering, model testing and interpretation is described in the "model.sh" script in the main repository. 
+
+See options.py for extra arguments you can pass into the train script, like `-r` for reggression and `-f` for focal loss
+
 
 ### Creating a new model
 Make a new model in the models directory. Make sure the name of the file and the name of the model match (and if it is a function, ends in _model).
@@ -12,31 +25,3 @@ From then on, when running train.py you can add --dataset \<your dataset name wi
 
 ### Creating Options
 If you want to add command-line arguments for hyperparameters to the model, you can add them in the options file and pass them into your model generator.
-
-### Tensorboard
-Logs are default placed in logs/\<dataset gen name\>/\<model name\>/\<timestamp\>
-```
-tensorboard --logdir /path/to/logs
-```
-
-
-###Getting Started
-Installing Requirements
-```
-pip3 install -r requirements.txt
-```
-Running a Model on the essential-off-target-filtered dataset with all features except for off target information
-```
-python3 train.py --dataset guide_linearfold_filtered_loo_offtarget   --model single_lstm_loo_offtarget
-```
-Running a Model on the whole dataset with all features
-```
-python3 train.py --dataset guide_linearfold_and_other --model single_lstm
-```
-See options.py for extra arguments you can pass into the train script, like `-r` for reggression and `-f` for focal loss
-
-
-####DataSet and Model Mappings
-SingleLSTM & SingleCNN -> guide, guide_with_flanks_and_linfold
-Double LSTM -> nearby_bases
-Triple LSTM -> nearby_bases_without_guide
