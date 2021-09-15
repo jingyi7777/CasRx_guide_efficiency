@@ -14,9 +14,3 @@ We also provide a user-friendly, web-based tool with precomputed model organism 
 * `prediction_results/`: Model prediction results.
 * `database/`: BLAST database and Refseq gene information. 
 * `model.sh`: Wrapper script for deep learning model training and testing. 
-
-## Requirements
-Installing Requirements
-```
-pip3 install -r requirements.txt
-```
