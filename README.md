@@ -1,9 +1,11 @@
 # CasRx_guide_efficiency
 Supplementary code for the analyse of CasRx tiling screen data and prediction of high efficiency CasRx guides.
 
-Please refer to ... for more information. If you find our code useful, please cite our work ...
+Please refer to <a href="https://www.biorxiv.org/content/10.1101/2021.09.14.460134v1" target="_blank">"Deep learning of Cas13 guide activity from high-throughput gene essentiality screening"</a> for more information.\
+If you find our code useful, please cite our work!
 
-We also provide a user-friendly, web-based tool with precomputed human and mouse transcriptome at ...
+We also provide a user-friendly, web-based tool with precomputed model organism transcriptome and custom sequences at 
+<a href="https://www.rnatargeting.org" target="_blank">rnatargeting.org</a>.
 
 ## Contents
 * `data/`: CasRx tiling screen data
